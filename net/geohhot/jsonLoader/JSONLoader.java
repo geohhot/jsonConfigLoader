@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.InputStream.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.Scanner;
 /**
 * JSONLoader - helper library
@@ -40,7 +42,7 @@ public class JSONLoader {
 		File configFile = new File(sourceFileName);
 		this.sourceFile = configFile;
 		this.fileIn = new Scanner (configFile);
-		this.fileOut = new PrintWriter (configFile);
+		this.fileOut = new PrintWriter (new BufferedWriter(new FileWriter(configFile, true)));
 
 		if (! configFile.exists()) {
 			// file doesn't exists
